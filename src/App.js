@@ -1,27 +1,17 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Example from "./Menu";
+import React from "react";
+import MessageListComponent from "./Messages/MessageListComponent";
+import PostMessageComponent from "./Messages/PostMessageComponent";
+import { MessageContextProvider } from "./ContextProvider/MessageContextProvider";
 
 function App() {
+  const [messageList, setMessageList] = React.useState([]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p className="font-press-start">
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="font-koho"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <div className="flex flex-row-reverse mr-10">
-        <Example />
-      </div>
+      <PostMessageComponent messageList={messageList} setMessageList={setMessageList}/>
+      <MessageListComponent messageList={messageList} setMessageList={setMessageList}/>
     </div>
   );
 }
